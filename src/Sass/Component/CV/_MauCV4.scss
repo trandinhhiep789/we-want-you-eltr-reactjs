@@ -1,0 +1,29 @@
+
+
+.headerCV4{
+    background-color: #556e8e;
+    border-bottom: 3px solid black;
+    .avatarAndName{
+
+        padding: 40px;
+
+        // text-align: center;
+        color: aliceblue;
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        img{
+            border: 3px solid white;
+        }
+        h1{
+            padding-top: 55px;
+        }
+    }
+}
+
+.headerMiniCV4{
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 3px solid black;
+}

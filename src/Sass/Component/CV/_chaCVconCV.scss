@@ -1,0 +1,183 @@
+.container{
+    
+    .xem1{
+        .chaCV1{
+            position: relative;
+            .conCV1{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 80%;
+                
+                opacity: 0;
+                transition: all .5s;
+                .nutCV1{
+                    color: green;
+                    font-weight: 700;
+                    background: rgb(209, 206, 206);
+                    width: 50%;
+                    border-radius: 10px;
+                    font-weight: 700;
+                    font-size: 15px;
+                }
+
+                .nutDungCV1{
+                    background-color: green;
+                    color: white;
+                    text-decoration: none;
+                    padding: 8px;
+                    border-radius: 20px;
+                    font-weight: 500;
+                }
+            }
+        }
+        :hover .conCV1{
+            // display: block;
+            opacity: 1;
+        }
+
+        .chaCV2{
+            position: relative;
+            .conCV2{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 80%;
+                
+                opacity: 0;
+                transition: all .5s;
+                .nutCV2{
+                    color: green;
+                    font-weight: 700;
+                    background: rgb(209, 206, 206);
+                    width: 50%;
+                    border-radius: 10px;
+                    font-weight: 700;
+                    font-size: 15px;
+                }
+
+                .nutDungCV2{
+                    background-color: green;
+                    color: white;
+                    text-decoration: none;
+                    padding: 8px;
+                    border-radius: 20px;
+                    font-weight: 500;
+                }
+            }
+        }
+        :hover .conCV2{
+            // display: block;
+            opacity: 1;
+        }
+        .chaCV3{
+            position: relative;
+            .conCV3{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 80%;
+                
+                opacity: 0;
+                transition: all .5s;
+                .nutCV3{
+                    color: green;
+                    font-weight: 700;
+                    background: rgb(209, 206, 206);
+                    width: 50%;
+                    border-radius: 10px;
+                    font-weight: 700;
+                    font-size: 15px;
+                }
+
+                .nutDungCV3{
+                    background-color: green;
+                    color: white;
+                    text-decoration: none;
+                    padding: 8px;
+                    border-radius: 20px;
+                    font-weight: 500;
+                }
+            }
+        }
+        :hover .conCV3{
+            // display: block;
+            opacity: 1;
+        }
+        .chaCV4{
+            position: relative;
+            .conCV4{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 80%;
+                
+                opacity: 0;
+                transition: all .5s;
+                .nutCV4{
+                    color: green;
+                    font-weight: 700;
+                    background: rgb(209, 206, 206);
+                    width: 50%;
+                    border-radius: 10px;
+                    font-weight: 700;
+                    font-size: 15px;
+                }
+
+                .nutDungCV4{
+                    background-color: green;
+                    color: white;
+                    text-decoration: none;
+                    padding: 8px;
+                    border-radius: 20px;
+                    font-weight: 500;
+                }
+            }
+        }
+        :hover .conCV4{
+            // display: block;
+            opacity: 1;
+        }
+        .chaCV5{
+            position: relative;
+            .conCV5{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 80%;
+                
+                opacity: 0;
+                transition: all .5s;
+                .nutCV5{
+                    color: green;
+                    font-weight: 700;
+                    background: rgb(209, 206, 206);
+                    width: 50%;
+                    border-radius: 10px;
+                    font-weight: 700;
+                    font-size: 15px;
+                }
+
+                .nutDungCV5{
+                    background-color: green;
+                    color: white;
+                    text-decoration: none;
+                    padding: 8px;
+                    border-radius: 20px;
+                    font-weight: 500;
+                }
+            }
+        }
+        :hover .conCV5{
+            // display: block;
+            opacity: 1;
+        }
+
+    }
+
+}

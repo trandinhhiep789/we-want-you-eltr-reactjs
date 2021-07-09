@@ -3,12 +3,27 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+// Cấu hình redux
+import { BrowserRouter, Router } from "react-router-dom";
+import { applyMiddleware, createStore } from "redux";
+import { Provider } from "react-redux";
+import { rootReducer } from "./Redux/Reducer/rootReducer";
+import reduxThunk from "redux-thunk";
+import { history } from "./Util/history";
+
+const store = createStore(rootReducer, applyMiddleware(reduxThunk));
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  <Router history={history}>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </Router>,
+
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

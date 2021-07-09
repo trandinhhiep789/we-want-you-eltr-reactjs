@@ -1,0 +1,16 @@
+.trangCaNhanCty{
+    .khungCty{
+        position: relative;
+        .logoCty{
+            z-index: 1;
+            position: absolute;
+            bottom: -50%;
+            left: 10%;
+
+            .tenCty{
+                padding-top: 120px;
+                margin-left: 50px;
+            }
+        }
+    }
+}

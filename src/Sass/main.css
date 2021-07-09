@@ -1,0 +1,588 @@
+.khungHinh {
+  -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 10px;
+          box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 10px;
+}
+
+.mauHeader {
+  background-color: #556e8e;
+  padding: 20px;
+}
+
+.mauHeader .header_CV1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.mauHeader .header_CV1 .imgCV1 {
+  width: 30%;
+  text-align: center;
+  margin-right: 55px;
+}
+
+.mauHeader .header_CV1 .title_CV1 {
+  margin-top: 40px;
+  width: 65%;
+}
+
+.mauHeader .thonTinCaNhan_CV1 {
+  margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.CV2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.CV2 .headerCV2 {
+  background-color: #556e8e;
+  width: 40%;
+  text-align: center;
+}
+
+.CV2 .headerCV2 .imgCV2 {
+  padding: 40px;
+  margin: 0 auto;
+}
+
+.CV2 .bodyCV2 {
+  width: 60%;
+}
+
+.mauXanh {
+  color: #556e8e;
+}
+
+.headerCV4 {
+  background-color: #556e8e;
+  border-bottom: 3px solid black;
+}
+
+.headerCV4 .avatarAndName {
+  padding: 40px;
+  color: aliceblue;
+  width: 80%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.headerCV4 .avatarAndName img {
+  border: 3px solid white;
+}
+
+.headerCV4 .avatarAndName h1 {
+  padding-top: 55px;
+}
+
+.headerMiniCV4 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  border-bottom: 3px solid black;
+}
+
+.mauCV5 .hederTrenCV5 {
+  color: white;
+  background-color: #36404f;
+  text-align: center;
+  padding: 30px;
+}
+
+.mauCV5 .headerDuoiCV5 {
+  background-color: #a5dfe5;
+}
+
+.mauCV5 .headerDuoiCV5 .headerDuoiCV5Content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.mauCV5 .bodyCV5 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.mauCV5 .bodyCV5 .bodyCV5_benTrai {
+  width: 40%;
+  text-align: center;
+  padding: 0 10px;
+}
+
+.mauCV5 .bodyCV5 .bodyCV5_benPhai {
+  width: 60%;
+  padding: 0 10px;
+}
+
+p {
+  margin: 0;
+}
+
+.tieuDeCV5 {
+  padding: 5px 0;
+  margin: 10px 0;
+  background-color: #a5dfe5;
+  text-align: center;
+}
+
+.modal-dialog {
+  max-width: 80% !important;
+}
+
+.container .xem1 .chaCV1 {
+  position: relative;
+}
+
+.container .xem1 .chaCV1 .conCV1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 80%;
+  opacity: 0;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+.container .xem1 .chaCV1 .conCV1 .nutCV1 {
+  color: green;
+  font-weight: 700;
+  background: #d1cece;
+  width: 50%;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.container .xem1 .chaCV1 .conCV1 .nutDungCV1 {
+  background-color: green;
+  color: white;
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.container .xem1 :hover .conCV1 {
+  opacity: 1;
+}
+
+.container .xem1 .chaCV2 {
+  position: relative;
+}
+
+.container .xem1 .chaCV2 .conCV2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 80%;
+  opacity: 0;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+.container .xem1 .chaCV2 .conCV2 .nutCV2 {
+  color: green;
+  font-weight: 700;
+  background: #d1cece;
+  width: 50%;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.container .xem1 .chaCV2 .conCV2 .nutDungCV2 {
+  background-color: green;
+  color: white;
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.container .xem1 :hover .conCV2 {
+  opacity: 1;
+}
+
+.container .xem1 .chaCV3 {
+  position: relative;
+}
+
+.container .xem1 .chaCV3 .conCV3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 80%;
+  opacity: 0;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+.container .xem1 .chaCV3 .conCV3 .nutCV3 {
+  color: green;
+  font-weight: 700;
+  background: #d1cece;
+  width: 50%;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.container .xem1 .chaCV3 .conCV3 .nutDungCV3 {
+  background-color: green;
+  color: white;
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.container .xem1 :hover .conCV3 {
+  opacity: 1;
+}
+
+.container .xem1 .chaCV4 {
+  position: relative;
+}
+
+.container .xem1 .chaCV4 .conCV4 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 80%;
+  opacity: 0;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+.container .xem1 .chaCV4 .conCV4 .nutCV4 {
+  color: green;
+  font-weight: 700;
+  background: #d1cece;
+  width: 50%;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.container .xem1 .chaCV4 .conCV4 .nutDungCV4 {
+  background-color: green;
+  color: white;
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.container .xem1 :hover .conCV4 {
+  opacity: 1;
+}
+
+.container .xem1 .chaCV5 {
+  position: relative;
+}
+
+.container .xem1 .chaCV5 .conCV5 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 80%;
+  opacity: 0;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+.container .xem1 .chaCV5 .conCV5 .nutCV5 {
+  color: green;
+  font-weight: 700;
+  background: #d1cece;
+  width: 50%;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.container .xem1 .chaCV5 .conCV5 .nutDungCV5 {
+  background-color: green;
+  color: white;
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.container .xem1 :hover .conCV5 {
+  opacity: 1;
+}
+
+.login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.login .login__form {
+  background-color: white;
+  padding: 40px 20px;
+  border-radius: 10px;
+  width: 400px;
+}
+
+.login .login__form .login__form-logo {
+  width: 100%;
+  text-align: center;
+}
+
+.login .login__form .login__form-title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: normal;
+  color: black;
+  margin-bottom: 20px;
+}
+
+.login .login__form .login__form-input {
+  margin-bottom: 20px;
+}
+
+.login .login__form .login__form-input .formLogin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: 1px solid rgba(187, 185, 185, 0.233);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 20px;
+  background-color: #f5f6f7;
+  padding: 10px 15px;
+}
+
+.login .login__form .login__form-input .formLogin i {
+  color: #acacac;
+}
+
+.login .login__form .login__form-input .formLogin input {
+  background: none;
+  outline: none;
+  border: none;
+  font-size: 15px;
+  font-weight: normal;
+}
+
+.login .login__form .login__form-input .formLogin input:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.login .login__form .login__form-input button {
+  width: 100%;
+  height: 100%;
+  font-size: 17px;
+  font-weight: normal;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  color: white;
+  background: -webkit-gradient(linear, left top, right top, from(#00de6ffb), to(#00bddefb));
+  background: linear-gradient(to right, #00de6ffb, #00bddefb);
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.login .login__form .login__form-input button:hover {
+  background: -webkit-gradient(linear, right top, left top, from(#00bddefb), to(#00de6ffb));
+  background: linear-gradient(to left, #00bddefb, #00de6ffb);
+}
+
+.login .login__form .login__form-remember {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.login .login__form .login__form-remember .remember__left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.login .login__form .login__form-remember .remember__left label {
+  font-size: 12px;
+  font-weight: normal;
+  color: black;
+  margin-left: 5px !important;
+}
+
+.login .login__form .login__form-remember .remember__right a {
+  color: blue;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.login .login__form .login__form-remember .remember__right a:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+.login .login__form .login__form-note {
+  text-align: right;
+}
+
+.login .login__form .login__form-note span {
+  color: black;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.login .login__form .login__form-note span a {
+  color: blue;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.login .login__form .login__form-note span a:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 576px) {
+  .login .login__form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 0;
+  }
+}
+
+.nutXanhXanh {
+  background: -webkit-gradient(linear, left top, right top, from(#00de6ffb), to(#00bddefb));
+  background: linear-gradient(to right, #00de6ffb, #00bddefb);
+}
+
+.nutSua {
+  background: -webkit-gradient(linear, left top, right top, from(#00aadefb), to(#de00d3fb));
+  background: linear-gradient(to right, #00aadefb, #de00d3fb);
+}
+
+.nutXoa {
+  background: -webkit-gradient(linear, left top, right top, from(#de0000fb), to(#de0000fb));
+  background: linear-gradient(to right, #de0000fb, #de0000fb);
+}
+
+.logoSignIn {
+  background: -webkit-gradient(linear, left top, right top, from(rgba(247, 225, 29, 0.849)), to(rgba(8, 156, 28, 0.75)));
+  background: linear-gradient(to right, rgba(247, 225, 29, 0.849), rgba(8, 156, 28, 0.75));
+  width: 15rem;
+  margin: 0 auto;
+  height: 15rem;
+  border-radius: 50%;
+  position: relative;
+}
+
+.logoSignIn img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.nutXanhXanh {
+  background: -webkit-gradient(linear, left top, right top, from(#00de6ffb), to(#00bddefb));
+  background: linear-gradient(to right, #00de6ffb, #00bddefb);
+}
+
+.nutSua {
+  background: -webkit-gradient(linear, left top, right top, from(#00aadefb), to(#de00d3fb));
+  background: linear-gradient(to right, #00aadefb, #de00d3fb);
+}
+
+.nutXoa {
+  background: -webkit-gradient(linear, left top, right top, from(#de0000fb), to(#de0000fb));
+  background: linear-gradient(to right, #de0000fb, #de0000fb);
+}
+
+.borderleft {
+  border-left: 5px solid green;
+}
+
+.trangCaNhanCty .khungCty {
+  position: relative;
+}
+
+.trangCaNhanCty .khungCty .logoCty {
+  z-index: 1;
+  position: absolute;
+  bottom: -50%;
+  left: 10%;
+}
+
+.trangCaNhanCty .khungCty .logoCty .tenCty {
+  padding-top: 120px;
+  margin-left: 50px;
+}
+
+.home {
+  background-color: #e9e9e9;
+}
+/*# sourceMappingURL=main.css.map */

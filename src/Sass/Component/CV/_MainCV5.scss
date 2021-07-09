@@ -1,0 +1,45 @@
+.mauCV5{
+    .hederTrenCV5{
+        color: white;
+        background-color: #36404f;
+    
+        text-align: center;
+        padding: 30px;
+    }
+    
+    .headerDuoiCV5{
+        background-color: #a5dfe5;
+        .headerDuoiCV5Content{
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+    }
+
+    .bodyCV5{
+        display: flex;
+        .bodyCV5_benTrai{
+            width: 40%;
+            text-align: center;
+            padding: 0 10px;
+        }
+        .bodyCV5_benPhai{
+            width: 60%;
+            padding: 0 10px;
+        }
+    }
+
+}
+
+p{
+    margin: 0;
+}
+
+.tieuDeCV5{
+    padding: 5px 0;
+    margin: 10px 0;
+    background-color: #a5dfe5;
+    text-align: center;
+}

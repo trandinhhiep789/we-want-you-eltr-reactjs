@@ -1,0 +1,25 @@
+.mauHeader{
+    background-color: #556e8e;
+    padding: 20px;
+    .header_CV1{
+        display: flex;
+        justify-content: center;
+        .imgCV1{
+            width: 30%;
+            text-align: center;
+            margin-right: 55px;
+        }
+        .title_CV1{
+            // text-align: center;
+            // line-height: 10px;
+            margin-top: 40px;
+            width: 65%;
+        }
+    }
+    
+    .thonTinCaNhan_CV1{
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-around;
+    }
+}
