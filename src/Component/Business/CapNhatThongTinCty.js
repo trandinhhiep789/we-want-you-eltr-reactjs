@@ -1,9 +1,11 @@
 /* eslint-disable no-loop-func */
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import logo_taocv from "../../Asset/CV/taoCV.png";
+import { NavLink } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { GET_DETAIL_USER } from "../../Redux/Const/API";
 import {
   capNhatThongTinCtyAction,
   suaUrl_Cty,
@@ -17,7 +19,10 @@ export default function CapNhatThongTinCty() {
 
   const userLogin = useSelector((state) => state.stateUser.userLogin);
   console.log("userLogin");
-  console.log(userLogin.data[0]._id);
+  console.log(userLogin);
+
+  
+  const [detail, setDetail] = useState([]);
 
   const [data, setData] = useState({
     hoVaTen: "",
@@ -121,6 +126,19 @@ export default function CapNhatThongTinCty() {
     dispatch(await capNhatThongTinCtyAction(newValues));
   };
 
+  useEffect(() => {
+    if(userLogin.data){
+      const promise = axios({
+        url: GET_DETAIL_USER + userLogin._id,
+        method: "GET",
+      });
+      promise.then((res) => {
+        console.log(res.data);
+        setDetail(res.data.data);
+      });
+    }
+  }, []);
+
   return (
     <div>
       <div
@@ -176,6 +194,7 @@ export default function CapNhatThongTinCty() {
               onChange={handleChange}
               className="form-control"
               name="hoVaTen"
+              placeholder={detail.hoVaTen}
             />
           </div>
           <div className="my-4">
@@ -184,6 +203,7 @@ export default function CapNhatThongTinCty() {
               onChange={handleChange}
               className="form-control"
               name="soDienThoai"
+              placeholder={detail.soDienThoai}
             />
           </div>
 
@@ -193,6 +213,7 @@ export default function CapNhatThongTinCty() {
               onChange={handleChange}
               className="form-control"
               name="diaChi"
+              placeholder={detail.diaChi}
             />
           </div>
 
@@ -207,15 +228,19 @@ export default function CapNhatThongTinCty() {
 
           <button
             type="submit"
-            className="w-100 nutXanhXanh p-3 text-white"
+            className="w-100 nutXanhXanh p-3 mb-4 text-white"
             style={{
               fontWeight: "700",
               fontSize: "20px",
               borderRadius: "30px",
             }}
           >
-            Submit
+            Cập nhật
           </button>
+
+          <div className="text-right">
+          <NavLink style={{borderRadius:"30px", fontWeight:"500"}} className="p-2 text-right bg-info mt-3 text-white" to="/">Bỏ qua</NavLink>
+          </div>
         </form>
       </div>
     </div>

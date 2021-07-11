@@ -8,6 +8,7 @@ if (localStorage.getItem("USER_LOGIN")) {
     userLogin = JSON.parse(localStorage.getItem("USER_LOGIN"));
 }
 
+
 const stateDefault = {
     userLogin: userLogin,
     accountLogin: accountLogin,
@@ -22,6 +23,7 @@ const stateDefault = {
 const QuanLyNguoiDungReducer = (state = stateDefault, action) => {
     switch (action.type) {
         case "DANG_NHAP": {
+            console.log("vo reducer")
             state.userLogin = action.data.data[0]
             state.accountLogin = action.account
             return { ...state }

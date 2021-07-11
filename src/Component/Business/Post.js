@@ -24,7 +24,7 @@ export default function Post(p) {
           <div className="m-4" style={{ width: "10%" }}>
             {p.imagePost ? (
               <Image2
-                className=""
+                className="khungHinh"
                 style={{ borderRadius: "50%", width: "50px" }}
                 src={p.imagePost}
               >

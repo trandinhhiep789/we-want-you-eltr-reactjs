@@ -26,8 +26,8 @@ export default function TrangCaNhanCty() {
   const [detail, setDetail] = useState([]);
 
   const userLogin = useSelector((state) => state.stateUser.userLogin);
-  // console.log("userLogin");
-  // console.log(userLogin.data[0]);
+  console.log("userLogin");
+  console.log(userLogin.data[0]);
 
   useEffect(() => {
     const promise = axios({
@@ -55,7 +55,7 @@ export default function TrangCaNhanCty() {
 
   return (
     <div>
-      <div className="trangCaNhanCty">
+      {detail.imageUrl ? <div className="trangCaNhanCty">
         <div className="khungCty">
           <ReactBootStrap.Carousel fade>
             {detail.imageUrlCover
@@ -76,18 +76,18 @@ export default function TrangCaNhanCty() {
             {detail.imageUrl ? (
               <Image2
                 className="khungHinh"
-                style={{ borderRadius: "50%", width: "250px" }}
+                style={{  width: "250px", height:"250px", borderRadius:"50%" }}
                 src={detail.imageUrl}
               >
                 <Image1
-                  style={{ borderRadius: "50%", width: "250px" }}
+                  style={{  width: "250px", height:"250px", borderRadius:"50%" }}
                   cloudName="dkhhh96tt"
                   publicId={detail.imageUrl}
                 />
               </Image2>
             ) : (
               <img
-                style={{ borderRadius: "50%" }}
+                style={{ }}
                 src="https://picsum.photos/250/250"
                 alt="logocty"
               />
@@ -98,7 +98,8 @@ export default function TrangCaNhanCty() {
               <br></br>
               <i style={{ fontSize: "20px", fontWeight: "300" }}>
                 {detail.diaChi}
-              </i>
+              </i><br></br>
+              <NavLink style={{fontSize:"20px"}} to="capnhatthongtincty">Cập nhật thông tin</NavLink>
             </h2>
           </div>
         </div>
@@ -148,17 +149,17 @@ export default function TrangCaNhanCty() {
             <div
               className="d-flex khungHinh my-4"
               key={m._id}
-              style={{ borderRadius: "50px" }}
+              style={{ borderRadius: "10px" }}
             >
               <div className="m-4">
                 {detail.imageUrl ? (
                   <Image2
                     className="khungHinh"
-                    style={{ borderRadius: "50%", width: "60px" }}
+                    style={{  width: "60px" }}
                     src={detail.imageUrl}
                   >
                     <Image1
-                      style={{ borderRadius: "50%", width: "60px" }}
+                      style={{  width: "60px" }}
                       cloudName="dkhhh96tt"
                       publicId={detail.imageUrl}
                     />
@@ -166,17 +167,23 @@ export default function TrangCaNhanCty() {
                 ) : (
                   <img
                     style={{ borderRadius: "50%" }}
-                    src="https://picsum.photos/250/250"
+                    src="https://picsum.photos/50/50"
                     alt="logocty"
                   />
                 )}
               </div>
-              <div className="m-4">
+              
+              <div className="w-100 m-4">
                 <h3>{m.tieuDe}</h3>
                 <div className="d-flex">
-                  <i className="mx-4">{m.luong}</i>
+                  <i className="mr-4">{m.luong}</i>
                   <i>{m.diaChi}</i>
                 </div>
+                {m.danhSachUngCuVien.length === 0 ? <i className="text-danger" style={{fontWeight:"500"}} >Chưa có ứng cử viên nào</i> : <i className="text-danger" style={{fontWeight:"500"}} >{`có ${m.danhSachUngCuVien.length} ứng cử viên` }</i>}
+                
+                <div className="text-right">
+                <i className="text-right">{m.create_date.slice(0, 10)}</i>
+              </div>
               </div>
             
             </div>
@@ -184,6 +191,11 @@ export default function TrangCaNhanCty() {
         </div>
         <div className="mt-4">.</div>
       </div>
+     :""}
+      <div className="text-center">
+          <NavLink to="capnhatthongtincty">Cập nhật thông tin công ty</NavLink>
+      </div>
+
     </div>
   );
 }

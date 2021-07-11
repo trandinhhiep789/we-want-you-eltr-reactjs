@@ -1,136 +1,102 @@
 import React from "react";
+import ReactHtmlParser from "react-html-parser";
 
-export default function MauCV1() {
+import { useRef } from "react";
+import { PDFExport, savePDF } from "@progress/kendo-react-pdf";
+
+export default function MauCV1(detail) {
+  const pdfExportComponent = useRef(null);
+  const contentArea = useRef(null);
+
+  const handleExportWithComponent = (event) => {
+    pdfExportComponent.current.save();
+  };
+  const handleExportWithFunction = (event) => {
+    savePDF(contentArea.current, { paperSize: "A4" });
+  };
+
   return (
-    <div className="container pt-3 mt-4 khungHinh" style={{width:"100%"}} >
-      <div className="mauCV1 ">
-        <div className="mauHeader text-white">
-          <div className="d-flex header_CV1 container">
-            <div className="imgCV1">
-              <img
+    <div className="">
+      <button className="btn btn-success my-4 khungHinh" onClick={handleExportWithComponent}>
+        Xuất file PDF
+      </button>
+        <div ref={contentArea} style={{ width: "80%", margin: "0 auto" }}>
+        <PDFExport ref={pdfExportComponent} paperSize="A3">
+          <div className="p-2 khungHinh">
+            <div className="mauCV1 ">
+              <div className="mauHeader text-white">
+                <div className="d-flex header_CV1 container">
+                  <div className="imgCV1">
+                    {/* <img
                 style={{ borderRadius: "50%" }}
                 src="https://picsum.photos/id/1/150/150"
                 alt="avataCv"
-              />
+              /> */}
+                    <img
+                      style={{
+                        borderRadius: "50%",
+                        height: "150px",
+                        width: "150px",
+                      }}
+                      src={detail.imageUrl}
+                      alt="avataCv"
+                    />
+                  </div>
+                  <div className="title_CV1">
+                    <h5 className="text-white">{detail.hoVaTen}</h5>
+                    <i className="text-white">{detail.viTriUngTuyen}</i>
+                  </div>
+                </div>
+                <div className="thonTinCaNhan_CV1">
+                  <span>{detail.diaChi}</span>
+                  <span>{detail.email}</span>
+                  <span>{detail.soDienThoai}</span>
+                </div>
+              </div>
             </div>
-            <div className="title_CV1">
-              <h1>Nguyên Văn Toàn</h1>
-              <i>Nhân viên chăm sóc khách hàng</i>
+            <div className="bodyCV1 ">
+              <div className="my-4">
+                <h6 className="mauXanh">MỤC TIÊU NGHỀ NGHIỆP</h6>
+                <span>{detail.mucTieuNgheNghiep}</span>
+              </div>
+              <div className="my-4">
+                <h6 className="mauXanh">KINH NGHIỆM LÀM VIỆC</h6>
+                {ReactHtmlParser(detail.kinhNghiemLamViec)}
+              </div>
+              <div className="my-4">
+                <h6 className="mauXanh">HỌC VẤN</h6>
+                <div
+                  className="d-flex"
+                  style={{ justifyContent: "space-between" }}
+                >
+                  <span style={{ width: "30%" }}>{detail.tenTruong}</span>
+                </div>
+              </div>
+
+              <div className="my-4">
+                <h6 className="mauXanh">HOẠT ĐỘNG</h6>
+                {detail.hoatDong}
+              </div>
+
+              <div className="my-4">
+                <h6 className="mauXanh">CÁC KĨ NĂNG</h6>
+                {detail.hoatDong}
+              </div>
+
+              <div className="my-4">
+                <h6 className="mauXanh">SỞ THÍCH</h6>
+                {detail.soThich}
+              </div>
+
+              <div className="my-4">
+                <h6 className="mauXanh">NGƯỜI THAM CHIẾU</h6>
+                {detail.nguoiThamChieu}
+              </div>
             </div>
           </div>
-          <div className="thonTinCaNhan_CV1">
-            <span>Số 1 đường Cầu Giấy, Hà Nội</span>
-            <span>hotro@topcv.vn</span>
-            <span>(024) 6680 5588</span>
-          </div>
-        </div>
-      </div>
-      <div className="bodyCV1 ">
-        <div className="my-4">
-          <h4 className="mauXanh">MỤC TIÊU NGHỀ NGHIỆP</h4>
-          <span>
-            Áp dụng những kinh nghiệm về kỹ năng bán hàng và sự hiểu biết về thị
-            trường để trở thành một nhân viên bán hàng chuyên nghiệp, mang đến
-            nhiều giá trị cho khách hàng. Từ đó giúp Công ty tăng số lượng khách
-            hàng và mở rộng tập khách hàng.
-          </span>
-        </div>
-        <div className="my-4">
-          <h4 className="mauXanh">KINH NGHIỆM LÀM VIỆC</h4>
-          <div
-            className="d-flex mb-4"
-            style={{ justifyContent: "space-between" }}
-          >
-            <span style={{ width: "50%", textAlign: "left" }}>
-              Đại học TOPCV - Quản trị Doanh nghiệp Tốt nghiệp loại Giỏi, điểm
-              trung bình 8.0
-            </span>
-            <span>10/2010 - 05/2014</span></div>
-            <div
-            className="d-flex mb-4"
-            style={{ justifyContent: "space-between" }}
-          >
-            <span style={{ width: "50%", textAlign: "left" }}>
-              Đại học TOPCV - Quản trị Doanh nghiệp Tốt nghiệp loại Giỏi, điểm
-              trung bình 8.0
-            </span>
-            <span>10/2010 - 05/2014</span></div>
-            <div
-            className="d-flex mb-4"
-            style={{ justifyContent: "space-between" }}
-          >
-            <span style={{ width: "50%", textAlign: "left" }}>
-              Đại học TOPCV - Quản trị Doanh nghiệp Tốt nghiệp loại Giỏi, điểm
-              trung bình 8.0
-            </span>
-            <span>10/2010 - 05/2014</span></div>
-
-        </div>
-        <div className="my-4">
-          <h4 className="mauXanh">HỌC VẤN</h4>
-          <div className="d-flex" style={{ justifyContent: "space-between" }}>
-            <span style={{ width: "30%" }}>
-              Đại học TOPCV - Quản trị Doanh nghiệp Tốt nghiệp loại Giỏi, điểm
-              trung bình 8.0
-            </span>
-            <span>10/2010 - 05/2014</span>
-          </div>
-        </div>
-
-        <div className="my-4">
-          <h4 className="mauXanh">HOẠT ĐỘNG</h4>
-          <div className="d-flex" style={{ justifyContent: "space-between" }}>
-            <span style={{ width: "50%", textAlign: "left" }}>
-              Nhóm tình nguyện TOPCV - Tình nguyện viên 10/2013 - 08/2014 Tập
-              hợp các món quà và phân phát tới người vô gia cư. - Chia sẻ, động
-              viên họ vượt qua giai đoạn khó khăn, giúp họ có những suy nghĩ lạc
-              quan.
-            </span>
-            <span>10/2010 - 05/2014</span>
-          </div>
+          </PDFExport>
         </div>
       
-        <div className="my-4">
-          <h4 className="mauXanh">CÁC KĨ NĂNG</h4>
-          <div className="d-flex" style={{ justifyContent: "space-between" }}>
-            <span style={{ width: "50%", textAlign: "left" }}>
-              Nhóm tình nguyện TOPCV - Tình nguyện viên 10/2013 - 08/2014 Tập
-              hợp các món quà và phân phát tới người vô gia cư. - Chia sẻ, động
-              viên họ vượt qua giai đoạn khó khăn, giúp họ có những suy nghĩ lạc
-              quan.
-            </span>
-            <span>10/2010 - 05/2014</span>
-          </div>
-        </div>
-      
-        <div className="my-4">
-          <h4 className="mauXanh">SỞ THÍCH</h4>
-          <div className="d-flex" style={{ justifyContent: "space-between" }}>
-            <span style={{ width: "50%", textAlign: "left" }}>
-              Nhóm tình nguyện TOPCV - Tình nguyện viên 10/2013 - 08/2014 Tập
-              hợp các món quà và phân phát tới người vô gia cư. - Chia sẻ, động
-              viên họ vượt qua giai đoạn khó khăn, giúp họ có những suy nghĩ lạc
-              quan.
-            </span>
-            <span>10/2010 - 05/2014</span>
-          </div>
-        </div>
-      
-        <div className="my-4">
-          <h4 className="mauXanh">NGƯỜI THAM CHIẾU</h4>
-          <div className="d-flex" style={{ justifyContent: "space-between" }}>
-            <span style={{ width: "50%", textAlign: "left" }}>
-              Nhóm tình nguyện TOPCV - Tình nguyện viên 10/2013 - 08/2014 Tập
-              hợp các món quà và phân phát tới người vô gia cư. - Chia sẻ, động
-              viên họ vượt qua giai đoạn khó khăn, giúp họ có những suy nghĩ lạc
-              quan.
-            </span>
-            <span>10/2010 - 05/2014</span>
-          </div>
-        </div>
-      
-
-      </div>
     </div>
   );
 }

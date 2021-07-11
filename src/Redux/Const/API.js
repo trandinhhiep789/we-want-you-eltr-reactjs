@@ -13,4 +13,8 @@ export const GET_POST_BY_IDUSER = "https://we-want-you-eltr.herokuapp.com/tuyend
 export const GET_ALL_POST = "https://we-want-you-eltr.herokuapp.com/tuyendung/getall_post" 
 export const GET_POST_RECOMMEN = "https://we-want-you-eltr.herokuapp.com/tuyendung/get_post_with_category_id?category_id=" 
 
-// ...
+// NỘP CV
+export const NOP_CV = "https://we-want-you-eltr.herokuapp.com/tuyendung/update_post/nopcv"
+
+//  CATEGORY
+export const GET_ALL_CATEGORY = "https://we-want-you-eltr.herokuapp.com/tuyendung/getall-category"

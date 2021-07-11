@@ -1,7 +1,7 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 import { history } from "../../Util/history";
-import {DANG_NHAP, CAPNHAT_THONGTIN, DANG_BAI} from "../Const/API"
+import {DANG_NHAP, DANG_KI, CAPNHAT_THONGTIN, DANG_BAI, NOP_CV} from "../Const/API"
 
 export const dangNhapApiAction = async (userLogin) => {
     return async (dispatch) => {
@@ -19,9 +19,9 @@ export const dangNhapApiAction = async (userLogin) => {
         //   localStorage.setItem("ACCESSTOKEN", result.data.token);
           localStorage.setItem("ACCOUNTLOGIN", JSON.stringify(userLogin));
   
-          if (result.data.data[0].loaiUser[0] == "admin") {
-            history.push('/')
-            dispatch({
+          if (result.data.data[0].loaiUser[0] === "business") {
+            
+            await dispatch({
               type: "DANG_NHAP",
               data: result.data,
               account: userLogin,
@@ -32,9 +32,9 @@ export const dangNhapApiAction = async (userLogin) => {
               `Xin chào ${result.data.data[0].tenUser}`,
               "success"
             );
+            history.push('/')
           } else {
-            history.push("/header");
-            dispatch({
+            await dispatch({
               type: "DANG_NHAP",
               data: result.data,
               account: userLogin,
@@ -44,6 +44,8 @@ export const dangNhapApiAction = async (userLogin) => {
               `Xin chào ${result.data.data[0].tenUser}`,
               "success"
             );
+            
+            history.push("/");
           }
         }else{
             Swal.fire("Thông báo", `${result.data.message}`,"error")
@@ -53,6 +55,25 @@ export const dangNhapApiAction = async (userLogin) => {
         Swal.fire("Thông báo", err, "error");
       }
     };
+};
+
+export const dangKyApiAction = async (userSignup) => {
+  return async (dispatch) => {
+    console.log("userSignup");
+    console.log(userSignup);
+    try {
+      let result = await axios({
+        url: DANG_KI,
+        method: "POST",
+        data: userSignup,
+      });
+      console.log(result.data.message);
+      Swal.fire("Thông báo", "Đăng ký thành công", "success");
+      history.push("/signin");
+    } catch (err) {
+      Swal.fire("Thông báo", err, "error");
+    }
+  };
 };
 
 export const suaUrl_User = async (imageUrl) => {
@@ -125,7 +146,7 @@ export const dangBaiAction = async (baiDang) => {
       });
       console.log(result.data);
       Swal.fire("Thông báo", "Đăng bài thành công", "success");
-      // history.push("/trangcanhancty");
+      history.push("/trangcanhancty");
     } catch (err) {
       console.log(err)
       Swal.fire("Thông báo", err, "error");
@@ -139,3 +160,22 @@ export const luuDetailPost = async (detail) => {
     detail: detail,
   };
 }
+
+export const nopCV = async (cv_id) => {
+  return async (dispatch) => {
+    console.log(cv_id)
+    try {
+      let result = await axios({
+        url: NOP_CV,
+        method: "PUT",
+        data: cv_id,
+      });
+      console.log(result.data);
+      Swal.fire("Thông báo", "Nộp cv thành công", "success");
+      // history.push("/quanlycvcanhan");
+    } catch (err) {
+      console.log(err)
+      Swal.fire("Thông báo", err, "error");
+    }
+  };
+};
