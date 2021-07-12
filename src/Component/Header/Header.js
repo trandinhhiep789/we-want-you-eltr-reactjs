@@ -17,17 +17,9 @@ import { Image as Image2 } from "antd";
 
 import "antd/dist/antd.css";
 
-import { useRef } from "react";
-import { PDFExport } from "@progress/kendo-react-pdf";
 
 export default function Header() {
 
-  const pdfExportComponent = useRef(null);
-  const contentArea = useRef(null);
-
-  const handleExportWithComponent = (event) => {
-    pdfExportComponent.current.save();
-  };
 
   const userLogin = useSelector((state) => state.stateUser.userLogin);
   // console.log("userLogin");
@@ -71,7 +63,7 @@ export default function Header() {
     <>
       <div className="khungHinh">
         <ReactBootStrap.Navbar bg="white" expand="sm">
-          <ReactBootStrap.Navbar.Brand href="#home">
+          <ReactBootStrap.Navbar.Brand href="/">
             <img style={{ width: "100px" }} src={logo} alt="logo" />
           </ReactBootStrap.Navbar.Brand>
           <ReactBootStrap.Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -197,16 +189,6 @@ export default function Header() {
         </ReactBootStrap.Navbar>
 
 
-        <PDFExport ref={pdfExportComponent} paperSize="A3" >
-        <div ref={contentArea}>
-        <p>hahah</p>
-        </div> <button
-            className="btn btn-success"
-            onClick={handleExportWithComponent}
-          >
-            Xuất file PDF
-          </button>
-        </PDFExport>
       </div>
     </>
   );

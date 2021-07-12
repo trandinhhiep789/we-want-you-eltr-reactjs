@@ -19,13 +19,13 @@ import Home from "./Component/Home/Home";
 import SignUpForBusiness from "./Component/signup_signin/SignUpForBusiness";
 import SignUpForPersonal from "./Component/signup_signin/SignUpForPersonal";
 import ChonLoaiTaiKhoan from "./Component/signup_signin/ChonLoaiTaiKhoan";
+import ChiTietBaiDang from "./Component/Business/ChiTietBaiDang"
+import { HomeTemplate } from "./Component/Template/HomeTemplate";
 
 function App() {
   return (
     <>
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/home" component={Home} />
 
         <Route exact path="/header" component={Header} />
         <Route exact path="/maucv1" component={MauCV1} />
@@ -33,21 +33,24 @@ function App() {
         <Route exact path="/maucv3" component={MauCV3} />
         <Route exact path="/maucv4" component={MauCV4} />
         <Route exact path="/maucv5" component={MauCV5} />
-        <Route exact path="/taocv" component={TaoCV} />
-        <Route exact path="/quanlycvcanhan" component={QuanLyCV_CaNhan} />
 
         <Route
           exact
           path="/capnhatthongtincty"
           component={CapNhatThongTinCty}
         />
-        <Route exact path="/trangcanhancty" component={TrangCaNhanCty} />
-        <Route exact path="/baidang" component={BaiDang} />
+        <HomeTemplate exact path="/trangcanhancty" Component={TrangCaNhanCty} />
+        <HomeTemplate exact path="/chitietbaidang/:maBaiDang" Component={ChiTietBaiDang} />
 
         <Route exact path="/signin" component={SignIn} />
         <Route exact path="/signupforbusiness" component={SignUpForBusiness} />
         <Route exact path="/signupforpersonal" component={SignUpForPersonal} />
         <Route exact path="/chonloaitaikhoan" component={ChonLoaiTaiKhoan} />
+
+        <HomeTemplate exact path="/" Component={Home}/>
+  
+        <HomeTemplate exact path="/quanlycvcanhan" Component={QuanLyCV_CaNhan}/>
+        <HomeTemplate exact path="/taocv" Component={TaoCV}/>
       </Switch>
     </>
   );

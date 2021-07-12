@@ -3,7 +3,7 @@ import ReactHtmlParser from "react-html-parser";
 import { useRef } from "react";
 import { PDFExport, savePDF } from "@progress/kendo-react-pdf";
 
-export default function MauCV2(detail) {
+export default function CV2(detail) {
   const pdfExportComponent = useRef(null);
 
   const handleExportWithComponent = (event) => {

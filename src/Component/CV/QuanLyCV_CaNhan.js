@@ -130,7 +130,6 @@ export default function QuanLyCV_CaNhan() {
 
   return (
     <div>
-    <Header/>
       <div className="container mb-4  ">
 
       {/* Cập nhật thông tin cá nhân */}

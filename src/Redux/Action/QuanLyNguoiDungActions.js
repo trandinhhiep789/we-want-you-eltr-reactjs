@@ -1,7 +1,7 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 import { history } from "../../Util/history";
-import {DANG_NHAP, DANG_KI, CAPNHAT_THONGTIN, DANG_BAI, NOP_CV} from "../Const/API"
+import {DANG_NHAP, DANG_KI, CAPNHAT_THONGTIN, DANG_BAI, SUA_BAI, DELETE_POST, NOP_CV} from "../Const/API"
 
 export const dangNhapApiAction = async (userLogin) => {
     return async (dispatch) => {
@@ -135,24 +135,6 @@ export const capNhatThongTinCtyAction = async (userCapNhat) => {
   };
 };
 
-export const dangBaiAction = async (baiDang) => {
-  return async (dispatch) => {
-    console.log(baiDang)
-    try {
-      let result = await axios({
-        url: DANG_BAI,
-        method: "POST",
-        data: baiDang,
-      });
-      console.log(result.data);
-      Swal.fire("Thông báo", "Đăng bài thành công", "success");
-      history.push("/trangcanhancty");
-    } catch (err) {
-      console.log(err)
-      Swal.fire("Thông báo", err, "error");
-    }
-  };
-};
 
 export const luuDetailPost = async (detail) => {
   return {
@@ -176,6 +158,62 @@ export const nopCV = async (cv_id) => {
     } catch (err) {
       console.log(err)
       Swal.fire("Thông báo", err, "error");
+    }
+  };
+};
+
+export const dangBaiAction = async (baiDang) => {
+  return async (dispatch) => {
+    console.log(baiDang)
+    try {
+      let result = await axios({
+        url: DANG_BAI,
+        method: "POST",
+        data: baiDang,
+      });
+      console.log(result.data);
+      Swal.fire("Thông báo", "Đăng bài thành công", "success");
+      history.push("/trangcanhancty");
+    } catch (err) {
+      console.log(err)
+      Swal.fire("Thông báo", err, "error");
+    }
+  };
+};
+
+export const suaBaiAction = async (baiDang) => {
+  return async (dispatch) => {
+    console.log(baiDang)
+    try {
+      let result = await axios({
+        url: SUA_BAI,
+        method: "PUT",
+        data: baiDang,
+      });
+      console.log(result.data);
+      Swal.fire("Thông báo", "Đăng bài thành công", "success");
+      history.push("/trangcanhancty");
+    } catch (err) {
+      console.log(err)
+      Swal.fire("Thông báo", err, "error");
+    }
+  };
+};
+
+export const xoaBaiDangAction = async (postIdDelete) => {
+  return async (dispatch) => {
+    console.log("POSTDelete");
+    console.log(postIdDelete);
+    try {
+      let result = await axios({
+        url: DELETE_POST + postIdDelete,
+        method: "DELETE",
+      });
+      console.log(result.data);
+      Swal.fire("Thông báo", "Xóa thành công", "success");
+      history.push("/trangcanhancty");
+    } catch (err) {
+      Swal.fire("Thông báo", err.response.data, "error");
     }
   };
 };

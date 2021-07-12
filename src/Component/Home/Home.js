@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "../Header/Header";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { GET_DETAIL_USER, GET_ALL_POST } from "../../Redux/Const/API"; // cloudinary, ant design
+import { GET_DETAIL_USER, GET_ALL_POST, GET_DETAIL_POST_BY_TIEU_DE} from "../../Redux/Const/API"; // cloudinary, ant design
 import Post from "../Business/Post";
 import ReactHtmlParser from "react-html-parser";
 import {nopCV} from "../../Redux/Action/QuanLyNguoiDungActions"
@@ -58,13 +58,55 @@ export default function Home() {
     }
   }
 
+  // TIM KIEM
+  const [search, setSearch] = useState([]);
+  const [post, setPost] = useState([]);
+
+  // submit information for search
+  const submit = (e) => {
+    e.preventDefault();
+
+    if (search) {
+      const promise = axios({
+        url: GET_DETAIL_POST_BY_TIEU_DE + search,
+        method: "GET",
+      });
+      promise.then((res) => {
+        console.log(res.data.data[0]);
+        setPost(res.data.data);
+      });
+
+      setSearch("");
+    }
+  };
+  const handleChange = (e) => {
+    setSearch(e.target.value);
+  };
+
   return (
-    <div className="home">
-      <div className="mb-4">
+    <div className="">
+      {/* <div className="mb-4">
         <Header />
-      </div>
+      </div> */}
 
       {/* khung tim kiem công việc */}
+      <div className="nutXanhXanh" style={{padding:"80px"}}>
+        <h2 className="text-white" style={{width:"70%", margin:"0 auto"}}>Tìm kiếm công việc ước mơ</h2>
+      <form className="d-flex my-4 khungHinh" onSubmit={submit} style={{width:"70%", margin:"0 auto"}}>
+          <input
+            className="form-control me-2 search"
+            type="search"
+            placeholder="Tìm kiếm việc làm, kĩ năng"
+            aria-label="Search"
+            value={search}
+            onChange={handleChange}
+            style={{ border: "none" }}
+          />
+          <button className="btn btn-success text-white" type="submit">
+            Search
+          </button>
+        </form>
+      </div>
 
       {/* việc làm tốt nhất */}
 
@@ -73,17 +115,26 @@ export default function Home() {
       </h3>
       <div className="d-flex">
         <div
-          className="ml-4 py-4 border bg-white w-50"
-          style={{ height: "450px", overflow: "auto" }}
+          className="ml-4 py-4 border bg-white w-50 khungHinh"
+          style={{ height: "450px", overflow: "auto",}}
         >
+          {post.length > 0 ?<i className="text-danger" style={{fontWeight:"500"}}>{`Tìm thấy ${post.length} kết quả`}</i>:""}
+          {post?.map((p) => (
+            <div className="borderRed">
+              <Post {...p} key={p._id} />  
+            </div>
+          ))}
           {allpost?.map((p) => (
             <Post {...p} key={p._id} />
           ))}
+          
+
+          
         </div>
 
         <div
-          className="mr-4 py-4 border bg-white w-50"
-          style={{ height: "450px", overflow: "auto" }}
+          className="mr-4 py-4 border bg-white w-50 khungHinh"
+          style={{ height: "450px", overflow: "auto",}}
         >
           <h1 className="text-center mauXanh">{detailPost.tieuDe}</h1>
           {userLogin.data?(userLogin.data[0].loaiUser[0] === "user" ? <button onClick={NopCV} className="w-100 btn btn-danger m-4">Apply Now</button> 
