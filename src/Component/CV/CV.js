@@ -2,13 +2,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { GET_DETAIL_USER } from "../../Redux/Const/API";
-import MauCV1 from "./MauCV1";
-import MauCV2 from "./MauCV2";
-import MauCV3 from "./MauCV3";
-import MauCV4 from "./MauCV4";
-import MauCV5 from "./MauCV5";
 
 import * as ReactBootStrap from "react-bootstrap";
+import CV1 from "./CV1";
+import CV2 from "./CV2";
+import CV3 from "./CV3";
+import CV4 from "./CV4";
+import CV5 from "./CV5";
 
 export default function CV(id) {
   const [show1, setShow1] = useState(false);
@@ -47,7 +47,7 @@ export default function CV(id) {
               </ReactBootStrap.Modal.Title>
             </ReactBootStrap.Modal.Header>
             <ReactBootStrap.Modal.Body style={{ width: "100%" }}>
-              <MauCV1 {...detail} />
+              <CV1 {...detail} />
             </ReactBootStrap.Modal.Body>
           </ReactBootStrap.Modal>
         </div>
@@ -76,7 +76,7 @@ export default function CV(id) {
               </ReactBootStrap.Modal.Title>
             </ReactBootStrap.Modal.Header>
             <ReactBootStrap.Modal.Body style={{ width: "100%" }}>
-              <MauCV5 {...detail} />
+              <CV5 {...detail} />
             </ReactBootStrap.Modal.Body>
           </ReactBootStrap.Modal>
         </div>
@@ -105,7 +105,7 @@ export default function CV(id) {
               </ReactBootStrap.Modal.Title>
             </ReactBootStrap.Modal.Header>
             <ReactBootStrap.Modal.Body style={{ width: "100%" }}>
-              <MauCV2 {...detail} />
+              <CV2 {...detail} />
             </ReactBootStrap.Modal.Body>
           </ReactBootStrap.Modal>
         </div>
@@ -134,7 +134,7 @@ export default function CV(id) {
               </ReactBootStrap.Modal.Title>
             </ReactBootStrap.Modal.Header>
             <ReactBootStrap.Modal.Body style={{ width: "100%" }}>
-              <MauCV3 {...detail} />
+              <CV3 {...detail} />
             </ReactBootStrap.Modal.Body>
           </ReactBootStrap.Modal>
         </div>
@@ -163,7 +163,7 @@ export default function CV(id) {
               </ReactBootStrap.Modal.Title>
             </ReactBootStrap.Modal.Header>
             <ReactBootStrap.Modal.Body style={{ width: "100%" }}>
-              <MauCV4 {...detail} />
+              <CV2 {...detail} />
             </ReactBootStrap.Modal.Body>
           </ReactBootStrap.Modal>
         </div>

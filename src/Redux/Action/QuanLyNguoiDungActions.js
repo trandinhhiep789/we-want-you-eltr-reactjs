@@ -1,7 +1,7 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 import { history } from "../../Util/history";
-import {DANG_NHAP, DANG_KI, CAPNHAT_THONGTIN, DANG_BAI, SUA_BAI, DELETE_POST, NOP_CV} from "../Const/API"
+import {DANG_NHAP, DANG_KI, CAPNHAT_THONGTIN, DANG_BAI, SUA_BAI, DELETE_POST, XOA_USER, NOP_CV} from "../Const/API"
 
 export const dangNhapApiAction = async (userLogin) => {
     return async (dispatch) => {
@@ -211,9 +211,30 @@ export const xoaBaiDangAction = async (postIdDelete) => {
       });
       console.log(result.data);
       Swal.fire("Thông báo", "Xóa thành công", "success");
-      history.push("/trangcanhancty");
+      // history.push("/trangcanhancty");
     } catch (err) {
       Swal.fire("Thông báo", err.response.data, "error");
     }
   };
 };
+
+export const xoaNguoiDungAction = async (userIdDelete) => {
+  return async (dispatch) => {
+    console.log("userIdDelete");
+    console.log(userIdDelete);
+    const newValues = {user_id: userIdDelete}
+    try {
+      let result = await axios({
+        url: XOA_USER,
+        method: "DELETE",
+        data: newValues,
+      });
+      console.log(result.data);
+      Swal.fire("Thông báo", "Xóa thành công", "success");
+      history.push("/admin/forbusiness");
+    } catch (err) {
+      Swal.fire("Thông báo", err.response.data, "error");
+    }
+  };
+};
+

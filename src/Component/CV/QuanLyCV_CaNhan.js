@@ -66,7 +66,7 @@ export default function QuanLyCV_CaNhan() {
     setCv5(false)
 
     if(userLogin.data){
-      const newValues = {mauCvChinh: "1", user_id: userLogin.data[0]._id}
+      const newValues = {mauCvChinh: "1", user_id: userLogin.data[0]._id, colorCV:"xanhduong"}
       console.log(newValues)
       dispatch(await capNhatThongTinAction(newValues));
     }
@@ -80,7 +80,7 @@ export default function QuanLyCV_CaNhan() {
     setCv5(false)
 
     if(userLogin.data){
-      const newValues = {mauCvChinh: "2", user_id: userLogin.data[0]._id}
+      const newValues = {mauCvChinh: "2", user_id: userLogin.data[0]._id, colorCV:"xanhduong"}
       console.log(newValues)
       dispatch(await capNhatThongTinAction(newValues));
     }
@@ -94,7 +94,7 @@ export default function QuanLyCV_CaNhan() {
     setCv5(false)
 
     if(userLogin.data){
-      const newValues = {mauCvChinh: "3", user_id: userLogin.data[0]._id}
+      const newValues = {mauCvChinh: "3", user_id: userLogin.data[0]._id, colorCV:"xanhduong"}
       console.log(newValues)
       dispatch(await capNhatThongTinAction(newValues));
     }
@@ -108,7 +108,7 @@ export default function QuanLyCV_CaNhan() {
     setCv5(false)
 
     if(userLogin.data){
-      const newValues = {mauCvChinh: "4", user_id: userLogin.data[0]._id}
+      const newValues = {mauCvChinh: "4", user_id: userLogin.data[0]._id, colorCV:"xanhduong"}
       console.log(newValues)
       dispatch(await capNhatThongTinAction(newValues));
     }
@@ -122,7 +122,7 @@ export default function QuanLyCV_CaNhan() {
     setCv5(true)
 
     if(userLogin.data){
-      const newValues = {mauCvChinh: "5", user_id: userLogin.data[0]._id}
+      const newValues = {mauCvChinh: "5", user_id: userLogin.data[0]._id, colorCV:"xanhduong"}
       console.log(newValues)
       dispatch(await capNhatThongTinAction(newValues));
     }

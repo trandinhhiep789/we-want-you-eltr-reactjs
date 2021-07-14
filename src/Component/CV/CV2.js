@@ -10,6 +10,7 @@ export default function CV2(detail) {
     pdfExportComponent.current.save();
   };
 
+  console.log(detail.colorCV)
   return (
     <div className="container py-3 my-3  " style={{ width: "80%" }}>
       <button
@@ -22,11 +23,11 @@ export default function CV2(detail) {
         <div>
           <div className=" CV2 khungHinh d-flex">
 
-            <div className="headerCV2 text-white" style={{width:"40%"}}>
+            <div className={`headerCV2 text-white ${detail.colorCV}`} style={{width:"40%"}}>
               <div className="imgCV2 ">
                 <img
                   style={{
-                    borderRadius: "50%",
+                    borderRadius: "30%",
                     height: "200px",
                     width: "200px",
                     margin: "0 auto",

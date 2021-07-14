@@ -25,6 +25,7 @@ const QuanLyNguoiDungReducer = (state = stateDefault, action) => {
         case "DANG_NHAP": {
             console.log("vo reducer")
             state.userLogin = action.data.data[0]
+            console.log( action.data.data[0])
             state.accountLogin = action.account
             return { ...state }
         }

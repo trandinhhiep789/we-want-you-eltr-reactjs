@@ -30,7 +30,7 @@ export default function CV5(detail) {
               <h6 className="text-white hovaten">{detail.hoVaTen}</h6>
               <i className="text-white">{detail.viTriUngTuyen}</i>
             </div>
-            <div className="headerDuoiCV5">
+            <div className={`headerDuoiCV5 ${detail.colorCV}`}>
               <div className="headerDuoiCV5Content">
                 <p>
                   <span style={{ fontWeight: "700" }}>Địa chỉ:</span>{" "}
@@ -57,7 +57,7 @@ export default function CV5(detail) {
           /> */}
               <img
                 style={{
-                  borderRadius: "50%",
+                  borderRadius: "30%",
                   height: "200px",
                   width: "200px",
                   margin: "0 auto",
@@ -67,38 +67,38 @@ export default function CV5(detail) {
               />
 
               <div className="mt-4">
-                <h6 className="tieuDeCV5">MỤC TIÊU NGHỀ NGHIỆP</h6>
+                <h6 className={`tieuDeCV5 ${detail.colorCV}`}>MỤC TIÊU NGHỀ NGHIỆP</h6>
                 <p className="text-left">{detail.mucTieuNgheNghiep}</p>
               </div>
 
               <div className="mt-4">
-                <h6 className="tieuDeCV5">CÁC KĨ NĂNG</h6>
+                <h6 className={`tieuDeCV5 ${detail.colorCV}`}>CÁC KĨ NĂNG</h6>
                 <p className="text-left">{detail.cacKiNang}</p>
               </div>
 
               <div className="mt-4">
-                <h6 className="tieuDeCV5">SỞ THÍCH</h6>
+                <h6 className={`tieuDeCV5 ${detail.colorCV}`}>SỞ THÍCH</h6>
                 <p className="text-left">{detail.soThich}</p>
               </div>
 
               <div className="mt-4">
-                <h6 className="tieuDeCV5">HOẠT ĐỘNG</h6>
+                <h6 className={`tieuDeCV5 ${detail.colorCV}`}>HOẠT ĐỘNG</h6>
                 <p className="text-left">{detail.hoatDong}</p>
               </div>
 
               <div className="mt-4">
-                <h6 className="tieuDeCV5">NGƯỜI THAM CHIẾU</h6>
+                <h6 className={`tieuDeCV5 ${detail.colorCV}`}>NGƯỜI THAM CHIẾU</h6>
                 <p className="text-left">{detail.nguoiThamChieu}</p>
               </div>
             </div>
             <div className="bodyCV5_benPhai">
               <div className="">
-                <h6 className="tieuDeCV5">HỌC VẤN</h6>
+                <h6 className={`tieuDeCV5 ${detail.colorCV}`}>HỌC VẤN</h6>
                 <p className="text-left">{detail.tenTruong}</p>
               </div>
 
               <div className="mt-4">
-                <h6 className="tieuDeCV5">KINH NGHIỆM LÀM VIỆC</h6>
+                <h6 className={`tieuDeCV5 ${detail.colorCV}`}>KINH NGHIỆM LÀM VIỆC</h6>
 
                 {ReactHtmlParser(detail.kinhNghiemLamViec)}
               </div>

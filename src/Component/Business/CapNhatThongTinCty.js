@@ -17,7 +17,7 @@ import {
 export default function CapNhatThongTinCty() {
   const dispatch = useDispatch();
 
-  const userLogin = useSelector((state) => state.stateUser.userLogin);
+  const userLogin = JSON.parse(localStorage.getItem("USER_LOGIN")).data[0]
   console.log("userLogin");
   console.log(userLogin);
 
@@ -112,7 +112,8 @@ export default function CapNhatThongTinCty() {
   var imageUrlCover = useSelector((state) => state.stateUser.imageUrlCoverCty);
   const handleSubmit = async (values) => {
     values.preventDefault();
-    const id = userLogin.data[0]._id;
+    if(userLogin){
+      const id = userLogin._id;
 
     const newValues = {
       ...data,
@@ -124,10 +125,11 @@ export default function CapNhatThongTinCty() {
     console.log(newValues);
 
     dispatch(await capNhatThongTinCtyAction(newValues));
+    }
   };
 
   useEffect(() => {
-    if(userLogin.data){
+    if(userLogin){
       const promise = axios({
         url: GET_DETAIL_USER + userLogin._id,
         method: "GET",

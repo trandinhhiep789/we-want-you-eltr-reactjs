@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import Header from "../Header/Header";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,16 +22,20 @@ export default function Home() {
   const detailPost = useSelector((state) => state.stateUser.detail_post);
 
   // chi tiet nguoi dung
-  useEffect(() => {
-    if(userLogin.data){
-      const promise = axios({
-        url: GET_DETAIL_USER + userLogin.data[0]._id,
-        method: "GET",
-      });
-      promise.then((res) => {
-        console.log(res.data);
-        setDetail(res.data.data);
-      });
+  useEffect(async() => {
+    if(localStorage.getItem("USER_LOGIN")){
+      // const promise = axios({
+      //   url: GET_DETAIL_USER + userLogin.data[0]._id,
+      //   method: "GET",
+      // });
+      // promise.then((res) => {
+      //   console.log(res.data);
+      //   setDetail(res.data.data);
+      // });
+      const { data } = await axios.get(`${GET_DETAIL_USER}${JSON.parse(localStorage.getItem("USER_LOGIN")).data[0]._id}`);
+    console.log("data detail");
+    console.log(data.data);
+    setDetail(data.data);
     }
     
   }, []);
@@ -137,7 +142,7 @@ export default function Home() {
           style={{ height: "450px", overflow: "auto",}}
         >
           <h1 className="text-center mauXanh">{detailPost.tieuDe}</h1>
-          {userLogin.data?(userLogin.data[0].loaiUser[0] === "user" ? <button onClick={NopCV} className="w-100 btn btn-danger m-4">Apply Now</button> 
+          {detail.imageUrl?(detail.loaiUser[0] === "user" ? <button onClick={NopCV} className="w-100 btn btn-danger m-4">Apply Now</button> 
           : <button className="w-100 btn btn-danger m-4" disabled>Apply Now</button> ):""}
           
           <div className="mx-4">{ReactHtmlParser(detailPost.noiDung)}</div>

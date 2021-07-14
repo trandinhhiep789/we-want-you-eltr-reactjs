@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../../Asset/Header/logo.png";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
@@ -17,13 +18,10 @@ import { Image as Image2 } from "antd";
 
 import "antd/dist/antd.css";
 
-
 export default function Header() {
-
-
   const userLogin = useSelector((state) => state.stateUser.userLogin);
   // console.log("userLogin");
-  // console.log(userLogin);
+  console.log(userLogin);
   const logOut = () => {
     Swal.fire({
       title: "Bạn có chắc muốn đăng xuất?",
@@ -41,23 +39,27 @@ export default function Header() {
     });
   };
 
-  
   const [detail, setDetail] = useState([]);
 
-
-  useEffect(() => {
-    if(userLogin.data){
-      const promise = axios({
-        url: GET_DETAIL_USER + userLogin.data[0]._id,
-        method: "GET",
-      });
-      promise.then((res) => {
-        // console.log(res.data);
-        setDetail(res.data.data);
-      });
+  useEffect( async () => {
+    if (localStorage.getItem("USER_LOGIN")) {
+      // const promise = axios({
+      //   url: GET_DETAIL_USER + userLogin.data[0]._id,
+      //   method: "GET",
+      // });
+      // promise.then((res) => {
+      //   console.log(res.data);
+      //   setDetail(res.data.data);
+      // });
+      const { data } = await axios.get(`${GET_DETAIL_USER}${JSON.parse(localStorage.getItem("USER_LOGIN")).data[0]._id}`);
+    console.log("data detail");
+    console.log(data.data);
+    setDetail(data.data);
     }
+    // console.log(JSON.parse(localStorage.getItem("USER_LOGIN")).data[0])
   }, []);
 
+  console.log(detail)
 
   return (
     <>
@@ -77,27 +79,31 @@ export default function Header() {
               </ReactBootStrap.Nav.Link>
             </ReactBootStrap.Nav>
             <ReactBootStrap.Form inline>
-              {userLogin.data ? (
+              {detail.tenUser ? (
                 <>
                   {detail.imageUrl ? (
-              <Image2
-                className="khungHinh"
-                style={{  width: "50px", height:"50px", borderRadius:"50%" }}
-                src={detail.imageUrl}
-              >
-                <Image1
-                  style={{  width: "50px", height:"50px", borderRadius:"50%" }}
-                  cloudName="dkhhh96tt"
-                  publicId={detail.imageUrl}
-                />
-              </Image2>
-            ) : (
-              <img
-                
-                src="https://picsum.photos/50/50"
-                alt="logocty"
-              />
-            )}
+                    <Image2
+                      className="khungHinh"
+                      style={{
+                        width: "50px",
+                        height: "50px",
+                        borderRadius: "50%",
+                      }}
+                      src={detail.imageUrl}
+                    >
+                      <Image1
+                        style={{
+                          width: "50px",
+                          height: "50px",
+                          borderRadius: "50%",
+                        }}
+                        cloudName="dkhhh96tt"
+                        publicId={detail.imageUrl}
+                      />
+                    </Image2>
+                  ) : (
+                    <img src="https://picsum.photos/50/50" alt="logocty" />
+                  )}
 
                   <ReactBootStrap.Dropdown>
                     <ReactBootStrap.Dropdown.Toggle
@@ -106,7 +112,7 @@ export default function Header() {
                     ></ReactBootStrap.Dropdown.Toggle>
 
                     <ReactBootStrap.Dropdown.Menu>
-                      {userLogin.data[0].loaiUser[0] === "user" ? (
+                      {detail.loaiUser[0] === "user" ? (
                         <ReactBootStrap.Dropdown.Item href="#/action-1">
                           <NavLink
                             style={{ fontSize: "15px", textDecoration: "none" }}
@@ -120,7 +126,7 @@ export default function Header() {
                         ""
                       )}
 
-                      {userLogin.data[0].loaiUser[0] === "business" ? (
+                      {detail.loaiUser[0] === "business" ? (
                         <ReactBootStrap.Dropdown.Item href="#/action-1">
                           <NavLink
                             style={{ fontSize: "15px", textDecoration: "none" }}
@@ -147,11 +153,11 @@ export default function Header() {
                     </ReactBootStrap.Dropdown.Menu>
                   </ReactBootStrap.Dropdown>
 
-                  {userLogin.data[0].loaiUser[0] === "admin" ? (
+                  {detail.loaiUser[0] === "admin" ? (
                     <NavLink
                       target="_blank"
                       style={{ fontSize: "15px" }}
-                      to="/admin/quanlysanpham"
+                      to="/admin"
                     >
                       Admin{" "}
                     </NavLink>
@@ -187,8 +193,6 @@ export default function Header() {
             </ReactBootStrap.Form>
           </ReactBootStrap.Navbar.Collapse>
         </ReactBootStrap.Navbar>
-
-
       </div>
     </>
   );

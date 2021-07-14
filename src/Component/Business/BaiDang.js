@@ -22,13 +22,13 @@ export default function BaiDang() {
 
   const [detail, setDetail] = useState([]);
 
-  const userLogin = useSelector((state) => state.stateUser.userLogin);
+  const userLogin = JSON.parse(localStorage.getItem("USER_LOGIN")).data[0]
   // console.log("userLogin");
   // console.log(userLogin.data[0]);
 
   useEffect(() => {
     const promise = axios({
-      url: GET_DETAIL_USER + userLogin.data[0]._id,
+      url: GET_DETAIL_USER + userLogin._id,
       method: "GET",
     });
     promise.then((res) => {

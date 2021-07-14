@@ -11,6 +11,8 @@ export default function CV4(detail) {
     pdfExportComponent.current.save();
   };
 
+  console.log(detail.colorCV)
+
   return (
     <div className="container" style={{ width: "80%", margin:"0 auto" }}>
       <button className="btn btn-success" onClick={handleExportWithComponent}>
@@ -19,7 +21,7 @@ export default function CV4(detail) {
       <PDFExport ref={pdfExportComponent} paperSize="A3">
       <div className="mauCV4 my-4 khungHinh">
         <div>
-          <div className="headerCV4">
+          <div className={`headerCV4 ${detail.colorCV}`}>
             <div className="avatarAndName">
               {/* <img
                 style={{ borderRadius: "30px" }}

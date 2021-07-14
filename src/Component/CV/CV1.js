@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import ReactHtmlParser from "react-html-parser";
 
 import { useRef } from "react";
@@ -15,16 +15,22 @@ export default function CV1(detail) {
     savePDF(contentArea.current, { paperSize: "A4" });
   };
 
+  
+
   return (
     <div className="">
-      <button className="btn btn-success my-4 khungHinh" onClick={handleExportWithComponent}>
+      <button
+        className="btn btn-success my-4 khungHinh"
+        onClick={handleExportWithComponent}
+      >
         Xuất file PDF
       </button>
-        <div ref={contentArea} style={{ width: "80%", margin: "0 auto" }}>
+      
+      <div ref={contentArea} style={{ width: "80%", margin: "0 auto" }}>
         <PDFExport ref={pdfExportComponent} paperSize="A3">
           <div className="p-2 khungHinh">
             <div className="mauCV1 ">
-              <div className="mauHeader text-white">
+              <div className={`mauHeader text-white ${detail.colorCV}`}>
                 <div className="d-flex header_CV1 container">
                   <div className="imgCV1">
                     {/* <img
@@ -34,7 +40,7 @@ export default function CV1(detail) {
               /> */}
                     <img
                       style={{
-                        borderRadius: "50%",
+                        borderRadius: "30%",
                         height: "150px",
                         width: "150px",
                       }}
@@ -94,9 +100,9 @@ export default function CV1(detail) {
               </div>
             </div>
           </div>
-          </PDFExport>
-        </div>
-      
+        </PDFExport>
+      </div>
     </div>
+  
   );
 }

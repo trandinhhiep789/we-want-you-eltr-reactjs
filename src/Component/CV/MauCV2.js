@@ -1,7 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import ReactHtmlParser from "react-html-parser";
 import { useRef } from "react";
 import { PDFExport, savePDF } from "@progress/kendo-react-pdf";
+
+import { useDispatch, useSelector } from "react-redux";
+import {capNhatThongTinAction} from "../../Redux/Action/QuanLyNguoiDungActions"
 
 export default function MauCV2(detail) {
   const pdfExportComponent = useRef(null);
@@ -10,23 +13,79 @@ export default function MauCV2(detail) {
     pdfExportComponent.current.save();
   };
 
+  const [value, setValue] = useState("xanhduong");
+
+  const dispatch = useDispatch();
+
+  const userLogin = useSelector((state) => state.stateUser.userLogin);
+
+  //xét màu cho CV
+  const setMauCV = (value) => {
+    if (value == "xanhla") {
+      return "xanhla";
+    } else if (value == "cam") {
+      return "cam";
+    } else if (value == "do") {
+      return "do";
+    } else if (value == "xanhduong") {
+      return "xanhduong";
+    }
+  };
+
+  const setMauXanhDuong = () => {
+    setValue("xanhduong")
+  }
+  const setMauXanh = () => {
+    setValue("xanhla")
+  }
+  const setMauCam = () => {
+    setValue("cam")
+  }
+  const setMauDo = () => {
+    setValue("do")
+  }
+
+  const dungMau = async () => {
+    if(userLogin.data){
+      const newValues = {mauCvChinh: "3", user_id: userLogin.data[0]._id, colorCV: value}
+      console.log(newValues)
+      dispatch(await capNhatThongTinAction(newValues));
+    }
+  }
+
+
   return (
     <div className="container py-3 my-3  " style={{ width: "80%" }}>
       <button
-        className="btn btn-success my-4 khungHinh"
+        className="btn btn-outline-success my-4 mr-4 khungHinh"
         onClick={handleExportWithComponent}
       >
         Xuất file PDF
       </button>
+      <span className="btn btn-success my-4 khungHinh mr-4" onClick={dungMau}>
+        Dùng mẫu này
+      </span> <br></br>
+      <span className="btn p-2 my-4 mr-2 khungHinh " style={{backgroundColor: "blue",borderRadius:"50%"}} onClick={setMauXanhDuong}>
+        
+      </span>
+      <span className="btn p-2 my-4 mr-2 khungHinh" style={{backgroundColor: "green",borderRadius:"50%"}} onClick={setMauXanh}>
+        
+      </span>
+      <span className="btn p-2 my-4 mr-2 khungHinh" style={{backgroundColor: "orange",borderRadius:"50%"}} onClick={setMauCam}>
+        
+      </span>
+      <span className="btn p-2 my-4 mr-2 khungHinh" style={{backgroundColor: "red",borderRadius:"50%"}} onClick={setMauDo}>
+        
+      </span>
       <PDFExport ref={pdfExportComponent} paperSize="A3">
         <div>
           <div className=" CV2 khungHinh d-flex">
 
-            <div className="headerCV2 text-white" style={{width:"40%"}}>
+            <div className={`headerCV2 text-white ${setMauCV(value)}`} style={{width:"40%"}}>
               <div className="imgCV2 ">
                 <img
                   style={{
-                    borderRadius: "50%",
+                    borderRadius: "30%",
                     height: "200px",
                     width: "200px",
                     margin: "0 auto",

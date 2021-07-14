@@ -44,7 +44,6 @@
 }
 
 .CV2 .headerCV2 {
-  background-color: #556e8e;
   width: 40%;
   text-align: center;
 }
@@ -106,10 +105,6 @@
   background-color: #36404f;
   text-align: center;
   padding: 30px;
-}
-
-.mauCV5 .headerDuoiCV5 {
-  background-color: #a5dfe5;
 }
 
 .mauCV5 .headerDuoiCV5 .headerDuoiCV5Content {
@@ -349,6 +344,48 @@ p {
 
 .container .xem1 :hover .conCV5 {
   opacity: 1;
+}
+
+.xanhduongnhat {
+  background-color: #a5dfe5;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.mauhong {
+  background-color: #f4b0ae;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.mautim {
+  background-color: #d6dae4;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.xanhduong {
+  background-color: #556e8e;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.xanhla {
+  background-color: rgba(0, 128, 0, 0.692);
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.cam {
+  background-color: #fcbd88;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.do {
+  background-color: rgba(255, 0, 0, 0.589);
+  -webkit-transition: all 1s;
+  transition: all 1s;
 }
 
 .login {

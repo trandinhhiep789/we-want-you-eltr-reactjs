@@ -25,30 +25,34 @@ export default function TrangCaNhanCty() {
   const [post, setPost] = useState([]);
   const [detail, setDetail] = useState([]);
 
-  const userLogin = useSelector((state) => state.stateUser.userLogin);
+  const userLogin = JSON.parse(localStorage.getItem("USER_LOGIN")).data[0]
   console.log("userLogin");
-  console.log(userLogin.data[0]);
+  // console.log(userLogin.data[0]);
 
   useEffect(() => {
-    const promise = axios({
-      url: GET_POST_BY_IDUSER + userLogin.data[0]._id,
-      method: "GET",
-    });
-    promise.then((res) => {
-      console.log(res.data);
-      setPost(res.data.data);
-    });
+    if(userLogin){
+      const promise = axios({
+        url: GET_POST_BY_IDUSER + userLogin._id,
+        method: "GET",
+      });
+      promise.then((res) => {
+        console.log(res.data);
+        setPost(res.data.data);
+      });
+    }
   }, []);
 
   useEffect(() => {
-    const promise = axios({
-      url: GET_DETAIL_USER + userLogin.data[0]._id,
-      method: "GET",
-    });
-    promise.then((res) => {
-      console.log(res.data);
-      setDetail(res.data.data);
-    });
+    if(userLogin){
+      const promise = axios({
+        url: GET_DETAIL_USER + userLogin._id,
+        method: "GET",
+      });
+      promise.then((res) => {
+        console.log(res.data);
+        setDetail(res.data.data);
+      });
+    }
   }, []);
 
   console.log(post);

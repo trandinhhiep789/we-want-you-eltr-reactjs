@@ -1,8 +1,11 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import ReactHtmlParser from "react-html-parser";
 
 // import { useRef } from "react";
 import { PDFExport } from "@progress/kendo-react-pdf";
+
+import { useDispatch, useSelector } from "react-redux";
+import { capNhatThongTinAction } from "../../Redux/Action/QuanLyNguoiDungActions";
 
 export default function MauCV5(detail) {
   const pdfExportComponent = useRef(null);
@@ -12,17 +15,86 @@ export default function MauCV5(detail) {
     pdfExportComponent.current.save();
   };
 
+  const [value, setValue] = useState("xanhduongnhat");
+
+  const dispatch = useDispatch();
+
+  const userLogin = useSelector((state) => state.stateUser.userLogin);
+
+  //xét màu cho CV
+  const setMauCV = (value) => {
+    if (value == "xanh") {
+      return "xanhla";
+    } else if (value == "cam") {
+      return "cam";
+    } else if (value == "do") {
+      return "do";
+    } else if (value == "xanhduongnhat") {
+      return "xanhduongnhat";
+    } else if (value == "mauhong") {
+      return "mauhong";
+    } else if (value == "mautim") {
+      return "mautim";
+    }
+  };
+
+  const setMauXanhDuongNhat = () => {
+    setValue("xanhduongnhat");
+  };
+  const setMauTim = () => {
+    setValue("mautim");
+  };
+  const setMauCam = () => {
+    setValue("cam");
+  };
+  const setMauHong = () => {
+    setValue("mauhong");
+  };
+
+  const dungMau = async () => {
+    if (userLogin.data) {
+      const newValues = {
+        mauCvChinh: "2",
+        user_id: userLogin.data[0]._id,
+        colorCV: value,
+      };
+      console.log(newValues);
+      dispatch(await capNhatThongTinAction(newValues));
+    }
+  };
+
   return (
-    <div
-      className="container  mauCV5  my-4 py-3"
-      style={{ width: "80%" }}
-    >
+    <div className="container  mauCV5  my-4 py-3" style={{ width: "80%" }}>
       <button
-            className="btn btn-success my-4"
-            onClick={handleExportWithComponent}
-          >
-            Xuất file PDF
-          </button>
+        className="btn btn-outline-success mr-4 my-4"
+        onClick={handleExportWithComponent}
+      >
+        Xuất file PDF
+      </button>
+      <span className="btn btn-success my-4 khungHinh mr-4" onClick={dungMau}>
+        Dùng mẫu này
+      </span>{" "}
+      <br></br>
+      <span
+        className="btn p-2 my-4 mr-2 khungHinh "
+        style={{ backgroundColor: "#a5dfe5", borderRadius: "50%" }}
+        onClick={setMauXanhDuongNhat}
+      ></span>
+      <span
+        className="btn p-2 my-4 mr-2 khungHinh"
+        style={{ backgroundColor: "#d6dae4", borderRadius: "50%" }}
+        onClick={setMauTim}
+      ></span>
+      <span
+        className="btn p-2 my-4 mr-2 khungHinh"
+        style={{ backgroundColor: "#fcbd88", borderRadius: "50%" }}
+        onClick={setMauCam}
+      ></span>
+      <span
+        className="btn p-2 my-4 mr-2 khungHinh"
+        style={{ backgroundColor: "pink", borderRadius: "50%" }}
+        onClick={setMauHong}
+      ></span>
       <PDFExport ref={pdfExportComponent} paperSize="A3">
         <div className="khungHinh  mauCV5">
           <div>
@@ -30,7 +102,7 @@ export default function MauCV5(detail) {
               <h6 className="text-white hovaten">{detail.hoVaTen}</h6>
               <i className="text-white">{detail.viTriUngTuyen}</i>
             </div>
-            <div className="headerDuoiCV5">
+            <div className={`headerDuoiCV5 ${setMauCV(value)}`}>
               <div className="headerDuoiCV5Content">
                 <p>
                   <span style={{ fontWeight: "700" }}>Địa chỉ:</span>{" "}
@@ -57,7 +129,7 @@ export default function MauCV5(detail) {
           /> */}
               <img
                 style={{
-                  borderRadius: "50%",
+                  borderRadius: "30%",
                   height: "200px",
                   width: "200px",
                   margin: "0 auto",
@@ -67,43 +139,41 @@ export default function MauCV5(detail) {
               />
 
               <div className="mt-4">
-                <h6 className="tieuDeCV5">MỤC TIÊU NGHỀ NGHIỆP</h6>
+                <h6 className={`tieuDeCV5 ${setMauCV(value)}`}>MỤC TIÊU NGHỀ NGHIỆP</h6>
                 <p className="text-left">{detail.mucTieuNgheNghiep}</p>
               </div>
 
               <div className="mt-4">
-                <h6 className="tieuDeCV5">CÁC KĨ NĂNG</h6>
+                <h6 className={`tieuDeCV5 ${setMauCV(value)}`}>CÁC KĨ NĂNG</h6>
                 <p className="text-left">{detail.cacKiNang}</p>
               </div>
 
               <div className="mt-4">
-                <h6 className="tieuDeCV5">SỞ THÍCH</h6>
+                <h6 className={`tieuDeCV5 ${setMauCV(value)}`}>SỞ THÍCH</h6>
                 <p className="text-left">{detail.soThich}</p>
               </div>
 
               <div className="mt-4">
-                <h6 className="tieuDeCV5">HOẠT ĐỘNG</h6>
+                <h6 className={`tieuDeCV5 ${setMauCV(value)}`}>HOẠT ĐỘNG</h6>
                 <p className="text-left">{detail.hoatDong}</p>
               </div>
 
               <div className="mt-4">
-                <h6 className="tieuDeCV5">NGƯỜI THAM CHIẾU</h6>
+                <h6 className={`tieuDeCV5 ${setMauCV(value)}`}>NGƯỜI THAM CHIẾU</h6>
                 <p className="text-left">{detail.nguoiThamChieu}</p>
               </div>
             </div>
             <div className="bodyCV5_benPhai">
               <div className="">
-                <h6 className="tieuDeCV5">HỌC VẤN</h6>
+                <h6 className={`tieuDeCV5 ${setMauCV(value)}`}>HỌC VẤN</h6>
                 <p className="text-left">{detail.tenTruong}</p>
               </div>
 
               <div className="mt-4">
-                <h6 className="tieuDeCV5">KINH NGHIỆM LÀM VIỆC</h6>
+                <h6 className={`tieuDeCV5 ${setMauCV(value)}`}>KINH NGHIỆM LÀM VIỆC</h6>
 
                 {ReactHtmlParser(detail.kinhNghiemLamViec)}
               </div>
-
-              
             </div>
           </div>
         </div>
