@@ -157,7 +157,7 @@ export default function Header() {
                     <NavLink
                       target="_blank"
                       style={{ fontSize: "15px" }}
-                      to="/admin"
+                      to="/admin/forbusiness"
                     >
                       Admin{" "}
                     </NavLink>

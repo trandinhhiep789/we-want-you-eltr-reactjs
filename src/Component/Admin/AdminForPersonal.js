@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {GET_LIST_BY_LOAIUSER} from "../../Redux/Const/API"
-import Pagination from "./Pagination"
+import { GET_LIST_BY_LOAIUSER } from "../../Redux/Const/API";
+import Pagination from "./Pagination";
 import Business from "./Business";
 
 export default function AdminForPersonal() {
@@ -16,12 +16,11 @@ export default function AdminForPersonal() {
 
   useEffect(() => {
     const fetchPost = async () => {
-
-      console.log(localStorage.getItem("ACCESSTOKEN") )
+      console.log(localStorage.getItem("ACCESSTOKEN"));
       setLoading(true);
 
       const res = await axios({
-        url:GET_LIST_BY_LOAIUSER + "user",
+        url: GET_LIST_BY_LOAIUSER + "user",
         method: "GET",
       });
 
@@ -38,7 +37,11 @@ export default function AdminForPersonal() {
     <div>
       {/* Danh sách tài khoản công ty */}
       <div className="my-4" style={{ width: "90%", margin: "0 auto" }}>
-        <h4>Danh sách tài khoản</h4>
+        <i
+          className="fas fa-user mr-4"
+          style={{ fontSize: "50px" }}
+        ></i>
+        <h4>Danh sách tài khoản cá nhân</h4>
         <i className="text-danger">{`Có tổng cộng ${posts.length} cá nhân`}</i>
       </div>
 

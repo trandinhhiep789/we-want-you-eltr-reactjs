@@ -27,14 +27,16 @@ export default function ChinhSuaBaiDang(detail1) {
   // console.log(userLogin.data[0]);
 
   useEffect(() => {
-    const promise = axios({
-      url: GET_DETAIL_USER + userLogin.data[0]._id,
-      method: "GET",
-    });
-    promise.then((res) => {
-      console.log(res.data);
-      setDetail(res.data.data);
-    });
+    if(userLogin.data){
+      const promise = axios({
+        url: GET_DETAIL_USER + userLogin.data[0]._id,
+        method: "GET",
+      });
+      promise.then((res) => {
+        console.log(res.data);
+        setDetail(res.data.data);
+      });
+    }
   }, []);
 
   const handleCkeditorState = (e, editor) => {
@@ -56,6 +58,7 @@ export default function ChinhSuaBaiDang(detail1) {
         initialValues={{
           tieuDe: "",
           luong: "",
+          tenGoiYTimKiem: "",
         }}
         validationSchema={loginUserSchema}
         onSubmit={handleSubmit}
@@ -95,6 +98,23 @@ export default function ChinhSuaBaiDang(detail1) {
               </div>
               <span style={{ color: "red", fontStyle: "italic" }}>
                 <ErrorMessage name="luong" />
+              </span>
+            </div>
+
+            <div className="">
+              <div className="my-4">
+              <h5 className="mauXanh">Thêm từ khóa gợi ý để dễ dàng tiếp cận hơn đến các ứng cử viên</h5>
+                <Field
+                  style={{ borderRadius: "20px" }}
+                  name="tenGoiYTimKiem"
+                  className="form-control "
+                  aria-describedby="tenGoiYTimKiem"
+                  placeholder={detail1.tenGoiYTimKiem}
+                  onChange={formikProps.handleChange}
+                />
+              </div>
+              <span style={{ color: "red", fontStyle: "italic" }}>
+                <ErrorMessage name="tenGoiYTimKiem" />
               </span>
             </div>
 

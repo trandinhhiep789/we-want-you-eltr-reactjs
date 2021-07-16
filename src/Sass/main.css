@@ -763,6 +763,10 @@ p {
   border-left: 5px solid green;
 }
 
+.bordernut {
+  border: 5px solid #00de6ffb;
+}
+
 .borderRed {
   border: 2px solid #decf00fb;
 }

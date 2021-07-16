@@ -8,6 +8,7 @@ export const CAPNHAT_THONGTIN = "https://we-want-you-eltr.herokuapp.com/tuyendun
 export const GET_DETAIL_USER = "https://we-want-you-eltr.herokuapp.com/tuyendung/get_user_by_id?user_id="
 export const GET_LIST_BY_LOAIUSER = "https://we-want-you-eltr.herokuapp.com/tuyendung/loaiUser?loaiUser="
 export const XOA_USER = "https://we-want-you-eltr.herokuapp.com/tuyendung/delete_user"
+export const DS_UNG_CU_VIEN_GOI_Y = "https://we-want-you-eltr.herokuapp.com/tuyendung/get_user_with_viTriUngTuyen?viTriUngTuyen="
 
 // POST
 export const DANG_BAI = "https://we-want-you-eltr.herokuapp.com/tuyendung/insert_new_post"

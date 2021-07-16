@@ -24,14 +24,6 @@ export default function Home() {
   // chi tiet nguoi dung
   useEffect(async() => {
     if(localStorage.getItem("USER_LOGIN")){
-      // const promise = axios({
-      //   url: GET_DETAIL_USER + userLogin.data[0]._id,
-      //   method: "GET",
-      // });
-      // promise.then((res) => {
-      //   console.log(res.data);
-      //   setDetail(res.data.data);
-      // });
       const { data } = await axios.get(`${GET_DETAIL_USER}${JSON.parse(localStorage.getItem("USER_LOGIN")).data[0]._id}`);
     console.log("data detail");
     console.log(data.data);
@@ -52,15 +44,29 @@ export default function Home() {
     });
   }, []);
 
+  // danh sach tat ca cac post recommened
+  useEffect(() => {
+    if (detail.tenGoiYTimKiem != undefined && detail.tenGoiYTimKiem != ""){
+      const promise = axios({
+        url: GET_DETAIL_POST_BY_TIEU_DE + detail.tenGoiYTimKiem,
+        method: "GET",
+      });
+      promise.then((res) => {
+        console.log(res.data);
+        setPostRecommenn(res.data.data);
+      });
+    }
+    
+  }, [detail]);
+
   const NopCV = async () => {
-    if(userLogin.data){
       // console.log(userLogin.data[0])
       // console.log(userLogin.data[0]._id)
-      const id = userLogin.data[0]._id
+      const id = detail._id
       const newValues = {"post_id": detailPost._id, "user_id": id}
       console.log(newValues)
       dispatch( await nopCV(newValues))
-    }
+
   }
 
   // TIM KIEM
@@ -148,6 +154,40 @@ export default function Home() {
           <div className="mx-4">{ReactHtmlParser(detailPost.noiDung)}</div>
         </div>
       </div>
+
+      {postRecommenn.length > 0 && detail.loaiUser[0] === "user"?
+          <div style={{marginTop: "50px"}}>
+            <i className="ml-3 text-danger" style={{fontSize:"20px", fontWeight:"500"}}>
+            {`Chúng tôi tìm thấy ${postRecommenn.length} công việc phù hợp với thông tin CV của bạn`}
+            </i>
+            <div className="d-flex mt-4">
+          <div
+            className="ml-4 py-4 border bg-white w-50 khungHinh"
+            style={{ height: "450px", overflow: "auto",}}
+          >
+            {post.length > 0 ?<i className="text-danger" style={{fontWeight:"500"}}>{`Tìm thấy ${post.length} kết quả`}</i>:""}
+            {postRecommenn?.map((p) => (
+              <div className="borderRed">
+                <Post {...p} key={p._id} />  
+              </div>
+            ))}
+          </div>
+          <div
+            className="mr-4 py-4 border bg-white w-50 khungHinh"
+            style={{ height: "450px", overflow: "auto",}}
+          >
+            <h1 className="text-center mauXanh">{detailPost.tieuDe}</h1>
+            {detail.imageUrl?(detail.loaiUser[0] === "user" ? <button onClick={NopCV} className="w-100 btn btn-danger m-4">Apply Now</button> 
+            : <button className="w-100 btn btn-danger m-4" disabled>Apply Now</button> ):""}
+            
+            <div className="mx-4">{ReactHtmlParser(detailPost.noiDung)}</div>
+          </div>
+        </div>
+  
+          </div>  
+      :""}
+
+      
       <div className="mt-4">.</div>
 
       {/* việc làm gợi ý */}

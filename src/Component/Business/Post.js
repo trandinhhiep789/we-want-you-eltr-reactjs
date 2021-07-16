@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {luuDetailPost} from "../../Redux/Action/QuanLyNguoiDungActions"
 
 import "antd/dist/antd.css";
+import { NavLink } from "react-router-dom";
 
 export default function Post(p) {
 
@@ -43,7 +44,7 @@ export default function Post(p) {
             )}
           </div>
           <div className="m-4" style={{ width: "90%" }}>
-            <h6>{p.tieuDe}</h6>
+            <NavLink to={`/chitiettrangcanhancty/${p.userId}`}><h6>{p.tieuDe}</h6></NavLink>
             <div
               className="d-flex "
               style={{ display: "flex", justifyContent: "space-between" }}

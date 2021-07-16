@@ -10,7 +10,7 @@ import CV3 from "./CV3";
 import CV4 from "./CV4";
 import CV5 from "./CV5";
 
-export default function CV(id) {
+export default function CV_RECOMMEN(id) {
   const [show1, setShow1] = useState(false);
 
   console.log(id);
@@ -34,8 +34,9 @@ export default function CV(id) {
             style={{borderRadius:"20px"}}
             onClick={() => setShow1(true)}
           >
-            {detail.hoVaTen} (số năm kinh nghiệm: {detail.soNamKinhNghiem})
+            {detail.hoVaTen} (số năm kinh nghiệm: {detail.soNamKinhNghiem}) 
           </ReactBootStrap.Button>
+          
           <ReactBootStrap.Modal
             show={show1}
             onHide={() => setShow1(false)}

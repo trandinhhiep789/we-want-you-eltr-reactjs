@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-loop-func */
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import logo_taocv from "../../Asset/CV/taoCV.png";
@@ -9,6 +10,7 @@ import {
   capNhatThongTinAction,
   suaUrl_User,
 } from "../../Redux/Action/QuanLyNguoiDungActions";
+import {GET_DETAIL_USER} from "../../Redux/Const/API"
 
 //Editor
 import { CKEditor } from "@ckeditor/ckeditor5-react";
@@ -17,9 +19,8 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 function TaoCV() {
   const dispatch = useDispatch();
 
-  const userLogin = useSelector((state) => state.stateUser.userLogin);
-  console.log("userLogin");
-  console.log(userLogin.data[0]._id);
+  const userLogin = JSON.parse(localStorage.getItem("USER_LOGIN")).data[0]
+  console.log(userLogin);
 
   const [data, setData] = useState({
     hoVaTen: "",
@@ -34,6 +35,8 @@ function TaoCV() {
     kinhNghiemLamViec: "",
     hoatDong: "",
     viTriUngTuyen: "",
+    soNamKinhNghiem:"",
+    tenGoiYTimKiem: "",
   });
 
   const handleChange = (e) => {
@@ -61,7 +64,7 @@ function TaoCV() {
 
   const handleSubmit = async (values) => {
     values.preventDefault();
-    const id = userLogin.data[0]._id;
+    const id = userLogin._id;
 
     const newValues = { ...data, user_id: id, imageName: imageUrl };
 
@@ -99,6 +102,19 @@ function TaoCV() {
     }
   };
 
+  const [detail, setDetail] = useState([]);
+
+   // chi tiet nguoi dung
+   useEffect(async() => {
+    if(localStorage.getItem("USER_LOGIN")){
+      const { data } = await axios.get(`${GET_DETAIL_USER}${JSON.parse(localStorage.getItem("USER_LOGIN")).data[0]._id}`);
+    console.log("data detail");
+    console.log(data.data);
+    setDetail(data.data);
+    }
+    
+  }, []);
+
   return (
     <div>
       <div
@@ -132,35 +148,59 @@ function TaoCV() {
         <form onSubmit={handleSubmit}>
           <div className="my-4">
             <h5>HỌ VÀ TÊN</h5>
-            <textarea
+            <input
               onChange={handleChange}
               className="form-control"
               name="hoVaTen"
+              placeholder={detail.hoVaTen}
             />
           </div>
           <div className="my-4">
             <h5>VỊ TRÍ ỨNG TUYỂN</h5>
-            <textarea
+            <input
               onChange={handleChange}
               className="form-control"
               name="viTriUngTuyen"
+              placeholder={detail.viTriUngTuyen}
             />
           </div>
           <div className="my-4">
             <h5>SỐ ĐIỆN THOẠI</h5>
-            <textarea
+            <input
               onChange={handleChange}
               className="form-control"
               name="soDienThoai"
+              placeholder={detail.soDienThoai}
             />
           </div>
 
           <div className="my-4">
             <h5>ĐỊA CHỈ</h5>
-            <textarea
+            <input
               onChange={handleChange}
               className="form-control"
               name="diaChi"
+              placeholder={detail.diaChi}
+            />
+          </div>
+
+          <div className="my-4">
+            <h5>SỐ NĂM KINH NGHIỆM TRONG LĨNH VỰC</h5>
+            <input
+              onChange={handleChange}
+              className="form-control"
+              name="soNamKinhNghiem"
+              placeholder={detail.soNamKinhNghiem}
+            />
+          </div>
+
+          <div className="my-4">
+            <h5>TÊN GỢI Ý TÍM KIẾM ĐỂ DỄ DÀNG KẾT NỐI VỚI CÁC DOANH NGHIỆP</h5>
+            <input
+              onChange={handleChange}
+              className="form-control"
+              name="tenGoiYTimKiem"
+              placeholder={detail.tenGoiYTimKiem}
             />
           </div>
 
@@ -170,6 +210,7 @@ function TaoCV() {
               onChange={handleChange}
               className="form-control"
               name="mucTieuNgheNghiep"
+              placeholder={detail.mucTieuNgheNghiep}
             />
           </div>
           <div className="my-4">
@@ -182,7 +223,7 @@ function TaoCV() {
               onChange={handleChange}
               className="form-control mb-3"
               name="tenTruong"
-              placeholder="Tên Trường Tốt nghiệp"
+              placeholder={detail.tenTruong}
             />
             <textarea
               onChange={handleChange}
@@ -198,6 +239,7 @@ function TaoCV() {
               onChange={handleChange}
               className="form-control"
               name="cacKiNang"
+              placeholder={detail.cacKiNang}
             />
           </div>
           <div className="my-4">
@@ -206,6 +248,7 @@ function TaoCV() {
               onChange={handleChange}
               className="form-control"
               name="soThich"
+              placeholder={detail.soThich}
             />
           </div>
           <div className="my-4">
@@ -214,6 +257,7 @@ function TaoCV() {
               onChange={handleChange}
               className="form-control"
               name="hoatDong"
+              placeholder={detail.hoatDong}
             />
           </div>
           <div className="my-4">
@@ -222,6 +266,7 @@ function TaoCV() {
               onChange={handleChange}
               className="form-control"
               name="nguoiThamChieu"
+              placeholder={detail.nguoiThamChieu}
             />
           </div>
           <button
